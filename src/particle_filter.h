@@ -112,6 +112,20 @@ class ParticleFilter {
   std::vector<Particle> particles;
 
  private:
+  /**
+   * calculateParticleWeight Updates the weight for particle based on the likelihood
+   *   of the observed measurements.
+   * @param particle Particle for which weight is calculated
+   * @param sensor_range Range [m] of sensor
+   * @param std_landmark[] Array of dimension 2
+   *   [Landmark measurement uncertainty [x [m], y [m]]]
+   * @param observations Vector of landmark observations
+   * @param map Map class containing map landmarks
+   */
+  double calculateParticleWeight(const Particle& particle, double sensor_range,
+	                             double std_landmark[], const std::vector<LandmarkObs> &observations,
+	                             const Map &map_landmarks);
+
   // Number of particles to draw
   int num_particles; 
   
